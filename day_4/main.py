@@ -2,7 +2,7 @@ import time
 
 def main():
     sum = 0
-    with open("input.txt") as f:
+    with open("test.txt") as f:
         lines = [[[int(val) for val in pair.split('-')] for pair in line.strip().split(',')] for line in f.readlines()]
     for set in lines:
         if set[0][0] <= set[1][0] and set[0][1] >= set[1][1]:
@@ -11,6 +11,15 @@ def main():
         elif set[0][0] >= set[1][0] and set[0][1] <= set[1][1]:
             sum += 1
             #print(1, set)
+    print(sum)
+
+def main3():
+    sum = 0
+    with open("test.txt") as f:
+        lines = [[[int(val) for val in pair.split('-')] for pair in line.strip().split(',')] for line in f.readlines()]
+    for set in lines:
+        if set[0][0] <= set[1][0] and set[0][1] >= set[1][1] or set[0][0] >= set[1][0] and set[0][1] <= set[1][1]:
+            sum += 1
     print(sum)
 
 def main2():
@@ -25,5 +34,10 @@ def main2():
     print(sum)
 
 if __name__ == "__main__":
+    start = time.time()
     main()
-    main2()
+    print((time.time() - start)*1000000)
+    start2 = time.time()
+    main3()
+    print((time.time() - start2)*1000000)
+    #main2()
