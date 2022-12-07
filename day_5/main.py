@@ -1,5 +1,3 @@
-import time
-
 def main():
     with open("input.txt") as f:
         line = ""
