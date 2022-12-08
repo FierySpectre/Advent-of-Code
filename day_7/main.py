@@ -28,7 +28,6 @@ class Dir():
             solutions = [subdir.get_solution2(minimum_size) for subdir in self.subdirs]
             solutions.append(self.get_size())
             solutions = list(filter(lambda val: val != None, solutions))
-            print(solutions)
             return min(solutions)
             
 
@@ -64,7 +63,7 @@ class File():
         self.size = size
 
 def main():
-    with open("test.txt") as f:
+    with open("input.txt") as f:
         root = Dir("root")
         current_dir = None
         for line in f.readlines():
@@ -85,11 +84,11 @@ def main():
                 size, name = line.split(' ')
                 size = int(size)
                 current_dir.make_file(name, size)
-    print(root.get_size())
-    print(root.get_solution())
-    print(root.get_solution2(30000000 - (70000000 - root.get_size())))
+    #print(root.get_solution())
+    #print(root.get_solution2(30000000 - (70000000 - root.get_size())))
 
 
 
 if __name__ == "__main__":
-    main()
+    import timeit
+    print(timeit.timeit("main()", setup="from __main__ import main", number=10000))
