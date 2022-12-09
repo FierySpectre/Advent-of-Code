@@ -1,4 +1,5 @@
 import time
+import timeit
 
 class Dir():
     def __init__(self, name, parent=None):
@@ -28,7 +29,7 @@ class Dir():
             solutions = [subdir.get_solution2(minimum_size) for subdir in self.subdirs]
             solutions.append(self.get_size())
             solutions = list(filter(lambda val: val != None, solutions))
-            print(solutions)
+            #print(solutions)
             return min(solutions)
             
 
@@ -85,11 +86,11 @@ def main():
                 size, name = line.split(' ')
                 size = int(size)
                 current_dir.make_file(name, size)
-    print(root.print())
-    print(root.get_solution())
-    print(root.get_solution2(30000000 - (70000000 - root.get_size())))
+    #print(root.print())
+    root.get_solution()
+    root.get_solution2(30000000 - (70000000 - root.get_size()))
 
 
 
 if __name__ == "__main__":
-    main()
+    print(timeit.timeit(main, number=1000))
