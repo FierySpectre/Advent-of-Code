@@ -94,3 +94,5 @@ def main():
 
 if __name__ == "__main__":
     print(timeit.timeit(main, number=1000))
+    import timeit
+    print(timeit.timeit("main()", setup="from __main__ import main", number=10000))
