@@ -64,7 +64,7 @@ class File():
         self.size = size
 
 def main():
-    with open("test.txt") as f:
+    with open("input.txt") as f:
         root = Dir("root")
         current_dir = None
         for line in f.readlines():
@@ -85,7 +85,7 @@ def main():
                 size, name = line.split(' ')
                 size = int(size)
                 current_dir.make_file(name, size)
-    print(root.get_size())
+    print(root.print())
     print(root.get_solution())
     print(root.get_solution2(30000000 - (70000000 - root.get_size())))
 
